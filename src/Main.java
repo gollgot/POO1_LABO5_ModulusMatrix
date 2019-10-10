@@ -1,7 +1,9 @@
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hacked, n00b !");
+
+        Matrice m1 = new Matrice(2,4,5);
+
     }
 
 }
