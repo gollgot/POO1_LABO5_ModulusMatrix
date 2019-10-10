@@ -35,6 +35,14 @@ public class Matrice {
 
     @Override
     public String toString() {
-        return super.toString();
+        String str = "";
+        for (int row = 0; row < this.n; ++row) {
+            for(int col = 0; col < this.m; ++col){
+                str += content[row][col];
+            }
+            str += "\n";
+        }
+
+        return str;
     }
 }
