@@ -19,6 +19,8 @@ public class Matrice {
         randomPopulate();
     }
 
+
+
     private void randomPopulate(){
         int max = modulo - 1;
         int min = 0;
@@ -31,8 +33,7 @@ public class Matrice {
         }
     }
 
-    public Matrice add(Matrice other) {
-
+    private Matrice doOperation(Matrice other, Operation operation){
         if (this.modulo != other.modulo) {
             throw new RuntimeException();
         }
@@ -46,56 +47,24 @@ public class Matrice {
             for(int col = 0; col < maxM; ++col){
                 int op1 = row > this.n || col > this.m ? 0 : this.content[row][col];
                 int op2 = row > other.n || col > other.m ? 0 : other.content[row][col];
-
-                sum.content[row][col] = (op1 + op2) % sum.modulo;
+                int operationResult = operation.calculate(op1, op2);
+                sum.content[row][col] = operationResult % sum.modulo;
             }
         }
 
         return sum;
+    }
+
+    public Matrice add(Matrice other) {
+        return doOperation(other, new Addition());
     }
 
     public Matrice sub(Matrice other) {
-        if (this.modulo != other.modulo) {
-            throw new RuntimeException();
-        }
-
-        int maxN = Math.max(this.n, other.n);
-        int maxM = Math.max(this.m, other.m);
-
-        Matrice sum = new Matrice(maxN, maxM, this.modulo);
-
-        for (int row = 0; row < maxN; ++row) {
-            for(int col = 0; col < maxM; ++col){
-                int op1 = row > this.n || col > this.m ? 0 : this.content[row][col];
-                int op2 = row > other.n || col > other.m ? 0 : other.content[row][col];
-
-                sum.content[row][col] = (op1 - op2) % sum.modulo;
-            }
-        }
-
-        return sum;
+        return doOperation(other, new Subtraction());
     }
     
     public Matrice multiply(Matrice other) {
-        if (this.modulo != other.modulo) {
-            throw new RuntimeException();
-        }
-
-        int maxN = Math.max(this.n, other.n);
-        int maxM = Math.max(this.m, other.m);
-
-        Matrice sum = new Matrice(maxN, maxM, this.modulo);
-
-        for (int row = 0; row < maxN; ++row) {
-            for(int col = 0; col < maxM; ++col){
-                int op1 = row > this.n || col > this.m ? 0 : this.content[row][col];
-                int op2 = row > other.n || col > other.m ? 0 : other.content[row][col];
-
-                sum.content[row][col] = (op1 * op2) % sum.modulo;
-            }
-        }
-
-        return sum;
+        return doOperation(other, new Multiplication());
     }
 
     @Override
