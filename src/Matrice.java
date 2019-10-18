@@ -21,6 +21,10 @@ public class Matrice {
 
 
 
+    // TODO : Faire un constructeur qui prend un tableau en parametre pour ainsi pouvoir créer une matrice avec exactement les valeurs qu'on veut
+
+
+
     private void randomPopulate(){
         int max = modulo - 1;
         int min = 0;
