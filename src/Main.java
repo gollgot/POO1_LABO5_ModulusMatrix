@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        test(3,4,3,5,5);
+        test(3, 4, 3, 5, 5);
 
         // TODO : Remove les tests ci-dessous qui servent juste d'example pour voir que ca marche comme l'example du prof
         /*
@@ -41,14 +41,14 @@ public class Main {
 
     /**
      * Create two matrix, execute arithmetic operations (add,sub,multiplication) and display the result.
-     * 
-     * @param n1 The row size of the first matrix
-     * @param m1 The column size of the first matrix
-     * @param n2 The row size of the second matrix
-     * @param m2 The column size of the second matrix
+     *
+     * @param n1      The row size of the first matrix
+     * @param m1      The column size of the first matrix
+     * @param n2      The row size of the second matrix
+     * @param m2      The column size of the second matrix
      * @param modulus The modulus
      */
-    private static void test(int n1, int m1, int n2, int m2, int modulus){
+    private static void test(int n1, int m1, int n2, int m2, int modulus) {
         Matrix matrix1 = new Matrix(n1, m1, modulus);
         Matrix matrix2 = new Matrix(n2, m2, modulus);
 

@@ -16,7 +16,6 @@ class Addition extends Operation {
      *
      * @param op1 The first operand
      * @param op2 The second operand
-     *
      * @return The result of the addition
      */
     @Override

@@ -16,7 +16,6 @@ abstract class Operation {
      *
      * @param op1 The first operand
      * @param op2 The second operand
-     *
      * @return The result of the calculation
      */
     abstract int calculate(int op1, int op2);
