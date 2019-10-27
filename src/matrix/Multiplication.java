@@ -12,7 +12,8 @@ package matrix;
 class Multiplication extends Operation {
 
     /**
-     * Do a multiplication between the first and the second operand
+     * Do a multiplication between two values
+     *
      * @param op1 The first operand
      * @param op2 The second operand
      * @return The result of the multiplication

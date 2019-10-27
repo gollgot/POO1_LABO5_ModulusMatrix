@@ -12,9 +12,11 @@ package matrix;
 class Subtraction extends Operation {
 
     /**
-     * Do a subtraction between the first and the second operand
+     * Do a subtraction between two values
+     *
      * @param op1 The first operand
      * @param op2 The second operand
+     *
      * @return The result of the subtraction
      */
     @Override

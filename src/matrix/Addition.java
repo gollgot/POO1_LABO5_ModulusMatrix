@@ -12,9 +12,11 @@ package matrix;
 class Addition extends Operation {
 
     /**
-     * Do an addition between the first and the second operand
+     * Do an addition between two values
+     *
      * @param op1 The first operand
      * @param op2 The second operand
+     *
      * @return The result of the addition
      */
     @Override

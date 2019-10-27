@@ -20,6 +20,7 @@ public class Matrix {
 
     /**
      * Matrix constructor that will create a N x M Matrix, contains random values between 0 and modulus-1
+     *
      * @param n The row size
      * @param m The column size
      * @param modulus The modulus
@@ -38,6 +39,7 @@ public class Matrix {
 
     /**
      * Matrix constructor that will create a Matrix contains values (between 0 and modulus-1) passed in parameter
+     *
      * @param values The values (as int[][]) that will be contains into the Matrix
      * @param modulus The modulus
      */
@@ -86,7 +88,9 @@ public class Matrix {
     /**
      * Addition of the current Matrix and the Matrix in parameter. The addition will be component by component and the
      * result will be modulus N (modulus passed into the constructor)
+     *
      * @param other The Matrix that we'll add to the current one
+     *
      * @return A new Matrix that is the result of the addition
      */
     public Matrix add(Matrix other) {
@@ -106,7 +110,9 @@ public class Matrix {
     /**
      * Multiplication of the current Matrix and the Matrix in parameter. The multiplication will be component by
      * component and the result will be modulus N (modulus passed into the constructor)
+     *
      * @param other The Matrix that we'll multiply to the current one
+     *
      * @return A new Matrix that is the result of the multiplication
      */
     public Matrix multiply(Matrix other) {
@@ -132,7 +138,9 @@ public class Matrix {
 
     /**
      * Test a modulus. It cannot be 0 or minus because of the matrix values that must be between 0 and modulus-1
+     *
      * @param modulus The modulus
+     *
      * @throws RuntimeException if the modulus is 0 or minus
      */
     private void testModulus(int modulus){
@@ -144,8 +152,10 @@ public class Matrix {
 
     /**
      * Test the matrix dimension. We cannot have void or negative dimensions
+     *
      * @param n The row size of the Matrix
      * @param m The column size of the Matrix
+     *
      * @throws RuntimeException if the one or more matrix dimension is 0 or negative
      */
     private void testMatrixDimension(int n, int m) {
@@ -155,10 +165,12 @@ public class Matrix {
     }
 
     /**
+     * Perform an arithmetic operation
      *
      * @param other The second Matrix that will be used with the current one to do the arithmetic operation
      * @param operation The arithmetic operation that we'll apply to the current and other Matrix
      * @return A new Matrix that will be the result of the operation
+     *
      * @throws RuntimeException if both Matrix have not the same modulus
      */
     private Matrix doOperation(Matrix other, Operation operation){
