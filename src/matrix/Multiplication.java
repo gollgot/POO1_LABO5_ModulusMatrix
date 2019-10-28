@@ -9,7 +9,7 @@
 
 package matrix;
 
-class Multiplication extends Operation {
+class Multiplication extends Operator {
 
     /**
      * Do a multiplication between two values

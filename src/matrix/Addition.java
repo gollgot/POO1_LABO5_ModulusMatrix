@@ -9,7 +9,7 @@
 
 package matrix;
 
-class Addition extends Operation {
+class Addition extends Operator {
 
     /**
      * Do an addition between two values

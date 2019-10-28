@@ -10,7 +10,7 @@
 
 package matrix;
 
-abstract class Operation {
+abstract class Operator {
     /**
      * Abstract method that will represent a specific calculation.
      *

@@ -9,7 +9,7 @@
 
 package matrix;
 
-class Subtraction extends Operation {
+class Subtraction extends Operator {
 
     /**
      * Do a subtraction between two values

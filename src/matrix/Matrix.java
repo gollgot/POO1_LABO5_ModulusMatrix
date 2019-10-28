@@ -56,18 +56,18 @@ public class Matrix {
         }
 
         // Test if each matrix values are between 0 and modulus - 1
-        for (int row = 0; row < values.length; ++row) {
-            for (int col = 0; col < values[row].length; ++col) {
-                if (values[row][col] < 0 || values[row][col] > (modulus - 1)) {
+        for (int[] value : values) {
+            for (int i : value) {
+                if (i < 0 || i > (modulus - 1)) {
                     throw new RuntimeException("All the matrix values must be between 0 and modulus - 1");
                 }
             }
         }
 
-        this.n = values.length;
-        this.m = values[0].length;
-        this.modulus = modulus;
-        this.content = values;
+        this.n          = values.length;
+        this.m          = values[0].length;
+        this.modulus    = modulus;
+        this.content    = values;
     }
 
     /**
@@ -93,7 +93,7 @@ public class Matrix {
      * @return A new Matrix that is the result of the addition
      */
     public Matrix add(Matrix other) {
-        return doOperation(other, new Addition());
+        return calc(other, new Addition());
     }
 
     /**
@@ -104,7 +104,7 @@ public class Matrix {
      * @return A new Matrix that is the result of the subtraction
      */
     public Matrix sub(Matrix other) {
-        return doOperation(other, new Subtraction());
+        return calc(other, new Subtraction());
     }
 
     /**
@@ -115,7 +115,7 @@ public class Matrix {
      * @return A new Matrix that is the result of the multiplication
      */
     public Matrix multiply(Matrix other) {
-        return doOperation(other, new Multiplication());
+        return calc(other, new Multiplication());
     }
 
     /**
@@ -165,12 +165,12 @@ public class Matrix {
     /**
      * Perform an arithmetic operation
      *
-     * @param other     The second Matrix that will be used with the current one to do the arithmetic operation
-     * @param operation The arithmetic operation that we'll apply to the current and other Matrix
+     * @param other    The second Matrix that will be used with the current one to do the arithmetic operation
+     * @param operator The arithmetic operation that we'll apply to the current and other Matrix
      * @return A new Matrix that will be the result of the operation
      * @throws RuntimeException if both Matrix have not the same modulus
      */
-    private Matrix doOperation(Matrix other, Operation operation) {
+    private Matrix calc(Matrix other, Operator operator) {
         // Both modulus must be the same
         if (this.modulus != other.modulus) {
             throw new RuntimeException("Both matrix must have the same modulus");
@@ -184,10 +184,12 @@ public class Matrix {
         // Do the arithmetic operation component by component
         for (int row = 0; row < maxN; ++row) {
             for (int col = 0; col < maxM; ++col) {
-                // Complete with 0 value if matrix have not the same rows or columns size
+                // Complete with 0 value if one of the matrices don't have the same dimensions
                 int op1 = row >= this.n || col >= this.m ? 0 : this.content[row][col];
                 int op2 = row >= other.n || col >= other.m ? 0 : other.content[row][col];
-                int operationResult = operation.calculate(op1, op2);
+
+                int operationResult = operator.calculate(op1, op2);
+
                 // We used Math.floorMod instead of % to have the good result with negative numbers
                 result.content[row][col] = Math.floorMod(operationResult, result.modulus);
             }
