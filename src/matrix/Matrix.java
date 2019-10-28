@@ -15,15 +15,14 @@ public class Matrix {
     private int modulus;
     private int[][] content;
 
-    // TODO : Vu que testModulus et testMatrixDimension peuvent throws une RuntimeException, est-ce que les constructeurs doivent aussi @throws RuntimeException ??
-
-
     /**
      * Matrix constructor that will create a N x M Matrix, contains random values between 0 and modulus-1
      *
      * @param n       The row size
      * @param m       The column size
      * @param modulus The modulus
+     * @throws RuntimeException if the modulus is 0 or minus
+     * @throws RuntimeException if a matrix dimension is 0 or negative
      */
     public Matrix(int n, int m, int modulus) {
         testModulus(modulus);
@@ -42,6 +41,10 @@ public class Matrix {
      *
      * @param values  The values (as int[][]) that will be contains into the Matrix
      * @param modulus The modulus
+     * @throws RuntimeException if the modulus is 0 or minus
+     * @throws RuntimeException if a matrix dimension is 0 or negative
+     * @throws RuntimeException If all matrix rows have not the same length
+     * @throws RuntimeException If a value are not between 0 and modulus - 1
      */
     public Matrix(int[][] values, int modulus) {
         testModulus(modulus);
@@ -154,7 +157,7 @@ public class Matrix {
      *
      * @param n The row size of the Matrix
      * @param m The column size of the Matrix
-     * @throws RuntimeException if the one or more matrix dimension is 0 or negative
+     * @throws RuntimeException if a matrix dimension is 0 or negative
      */
     private void testMatrixDimension(int n, int m) {
         if (n <= 0 || m <= 0) {
